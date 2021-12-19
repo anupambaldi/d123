@@ -1,0 +1,42 @@
+<% layout('../layouts/list') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Vendors</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">List</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Store(Vendor) List</h4>
+            <div style="margin-bottom:10px;" class="page-title-right">
+                    <a href="/stores/add" class="btn btn-success waves-effect waves-light"><span
+                                class="fa fa-plus"></span> Add </a>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+                <table class="table nowrap" id="store-datatable">
+                    <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>

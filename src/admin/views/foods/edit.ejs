@@ -1,0 +1,108 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/restaurants">Restaurant Manager</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="/restaurants/food_edit/<%=data[0]._id%>" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Food Name<span class="text-danger">*</span></label>
+                                <input type="text" name="food_name" value="<%=data[0].food_name%>"  class="form-control" placeholder="Enter Name" autocomplete="off" required="required" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Calories<span class="text-danger">*</span></label>
+                                <input type="text" name="calories" value="<%=data[0].calories%>" class="form-control" placeholder="Enter Calories" autocomplete="off" required="required" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Price<span class="text-danger">*</span></label>
+                                <input type="text"  name="price" value="<%=data[0].price%>" class="form-control" placeholder="Enter Price" autocomplete="off" required="required">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Description<span class="text-danger">*</span></label>
+                                <textarea name="description" class="form-control" placeholder="Enter Description" required><%= data[0].description %></textarea>
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                    <label>Food Image</label>
+                                    <img src="<%=data[0].food_image%>"  alt="name" style="width: 50px; height: 50px;" >
+                                    <input type="file"  name="food_image" class="form-control" placeholder="Image" autocomplete="off" >
+                                   
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Category<span class="text-danger">*</span></label> <br>
+                                        <select name="categories"  class="form-control" required >
+                                            <option value="">Select Category</option>
+                                            <% detail.forEach(function(category, index){ %>
+                                            <option value="<%= category._id %>"  <% if(data[0].categoryId == category._id.toString()) { %> selected<% } %>><%= category.name %></option>
+                                            <% }) %>
+                                        </select>
+                                        <div class="text-danger categories"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Food Type<span class="text-danger">*</span></label> <br>
+                                        <select name="food_type"  class="form-control" required >
+                                            <option value="">Select Category</option>
+                                            <% foodType.forEach(function(category, index){ %>
+                                            <option value="<%=category%>"  <% if(data[0].food_type == category.toLowerCase()) { %> selected<% } %>><%= category %></option>
+                                            <% }) %>
+                                        </select>
+                                        <div class="text-danger categories"></div>
+                                    </div>
+                                </div>
+
+                        <div class="col-lg-12 text-left">
+                            <div class="form-group mb-3 text-center">
+                               <button  type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

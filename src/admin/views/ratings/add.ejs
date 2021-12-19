@@ -1,0 +1,105 @@
+<% layout('../layouts/list') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center col-6">
+                    <!-- Add New Contact Btn -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/practices">Practices</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="font-20 mb-30">Add Post</h4>
+                <form method="post" id="addPostForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Product Name<span class="text-danger">*</span></label>
+                                <input type="text" name="product_name" class="form-control" placeholder="Product Name" autocomplete="nope">
+                                <div class="text-danger product_name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Swap Type<span class="text-danger">*</span></label>
+                                <select name="swap_type" class="form-control">
+                                    <option value="">Select Swap Type</option>
+                                </select>
+                                <div class="text-danger swap_type"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Category<span class="text-danger">*</span></label>
+                                <select name="category" class="form-control">
+                                    <option value="">Select Category</option>
+                                </select>
+                                <div class="text-danger swap_type"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Preferred Email<span class="text-danger">*</span></label>
+                                <input type="text" name="email" id="email" class="form-control" placeholder="Preferred Email" autocomplete="nope">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Mobile Number<span class="text-danger">*</span></label>
+                                <input type="text" name="mobile" class="form-control" data-toggle="input-mask" data-mask-format="(000) 000-0000" placeholder="Mobile Number" autocomplete="nope">
+                                <div class="text-danger mobile"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>City<span class="text-danger">*</span></label>
+                                <input type="text" name="city" class="form-control" placeholder="City" autocomplete="nope">
+                                <div class="text-danger city"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Zip Code<span class="text-danger">*</span></label>
+                                <input type="text" name="zip" class="form-control" placeholder="Zip Code" autocomplete="nope">
+                                <div class="text-danger zip"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Country<span class="text-danger"></span></label>
+                                <input type="text" name="country" class="form-control" placeholder="Country" value="United States" readonly="true" autocomplete="nope">
+                                <div class="text-danger country"></div>
+                            </div>
+                        </div>
+                        
+
+                       
+
+                        <div class="col-lg-12 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="submitAddPracticeForm" type="submit" class="btn btn-primary waves-effect waves-light">Add Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

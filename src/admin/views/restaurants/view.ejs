@@ -1,0 +1,104 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/restaurants">Restaurants Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">View</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">View Restaurant Detail</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Restaurant Image:</b> </label> 
+                            <% let tess = (restaurant.yelp_id)?restaurant.image_url:restaurant.image_url %>
+                            <img src="<%= tess %>" width="100" height="100"/>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Restaurant Name:</b> </label> <%= restaurant.name %>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Rating:</b> </label> <%= restaurant.rating %>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Contact:</b> </label> <%= restaurant.phone %>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Review Count:</b> </label> <%= restaurant.review_count %>
+                        </div>
+                    </div>
+
+                        <% if(restaurant.categories){ %>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                <label><b>Category:</b></label>
+                                <%  restaurant.categories.forEach( function(category){ %>
+                                    <%= category.name  %><br> 
+                                <% }) %>
+            
+                            </div>
+                        </div>
+                            <% } %>
+                     
+                    <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                    <label><b>Address Location:</b></label>
+                    <label><b>Address1:</b></label> <%= restaurant.location.address1 %><br>
+                    <label><b>Address2:</b></label> <%= restaurant.location.address2 %><br>
+                    <label><b>Address3:</b></label> <%= restaurant.location.address3 %><br>
+                    <label><b>Country:</b></label> <%= restaurant.location.country %><br>
+                    <label><b>State:</b></label> <%= restaurant.location.state %><br>
+                    <label><b>City:</b></label> <%= restaurant.location.city %><br>
+                    <label><b>Zip Code:</b></label> <%= restaurant.location.zip_code %><br>
+                    </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                        <label><b>URL:</b> </label><a href="<%= restaurant.url %>" target="_blank" style="color: skyblue;"> <%= restaurant.url %></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Status:</b></label> <%- restaurant.is_active ? '<span class="badge label-table badge-secondary">In-Active</span>': '<span class="badge label-table badge-success">Active</span>' %>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Created date:</b></label> <%= showDate(restaurant.created) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

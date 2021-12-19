@@ -1,0 +1,412 @@
+<% layout('../layouts/admin') -%>
+<style>
+    #latitude-error {
+        font-weight: normal;
+    }
+    #longitude-error {
+        font-weight: normal;
+    }
+</style>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/restaurants">Resturant Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Add Resturant Detail</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" id="addResturantForm" enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Name<span class="text-danger">*</span></label>
+                                <input id="name" type="text" name="name" class="form-control" placeholder="Enter Restaurant Name" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Phone<span class="text-danger">*</span></label>
+                                <input id="phone" type="text" name="phone" class="form-control" placeholder="Phone" autocomplete="off">
+                                <div class="text-danger phone"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Image<span class="text-danger">*</span></label>
+                                <div class="profile-pic-div p-absolute">                             
+                                    <input type="file" id="fileUpload" accept="image/*" name="image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Additional Images<span class="text-danger">*</span></label>
+                                <div class="profile-pic-div p-absolute">                             
+                                    <input multiple="multiple" type="file" id="fileUpload" accept="image/*" name="additional_images" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>URL<span class="text-danger">*</span></label>
+                                <input id="url" type="text" name="url" class="form-control" placeholder="https://example.com" autocomplete="off">
+                                <div class="text-danger url"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Rating</label>
+                                <input type="number" name="rating" class="form-control" placeholder="Enter rating" autocomplete="off">
+                                <div class="text-danger rating"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Category</label> <br>
+                                <select class="form-control select2-multiple select-bg" data-toggle="select2" name="categories" id="categories" multiple>
+                                    <option value="">Select Category</option>
+                                    <% categories.forEach(function(category){ %>
+                                        <option value="<%= category._id %>" onclick="myFunction(this)"> <%= category.name %> </option>
+                                    <% }) %>
+                                </select>
+                                <div class="text-danger categories"></div>
+                            </div>
+                        </div>
+                    
+                      
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body1">
+                                    <h4 style="font-weight: normal;" class="header-title">Coordinates:</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label style="font-weight: normal;" for="inputLongitude" class="col-form-label">Longitude<span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="longitude" name="longitude" onkeypress="return IsNumeric(event);" autocomplete="off">
+                                            <div class="text-danger longitude"></div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label style="font-weight: normal;" for="inputLatitude" class="col-form-label">Latitude<span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="latitude" name="latitude" onkeypress="return IsNumeric(event);" autocomplete="off">
+                                            <div style="font-weight: normal;" class="text-danger latitude"></div>
+                                        </div>
+
+                                    </div>
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+                        
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Address1<span class="text-danger">*</span></label>
+                                <input type="text" name="address1" class="form-control" placeholder="Enter aAdress1" autocomplete="off">
+                                <div class="text-danger address1"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Address2</label>
+                            <input type="text" name="address2" class="form-control" placeholder="Enter aAdress2" autocomplete="off">
+                                <div class="text-danger address2"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Address3</label>
+                                <input type="text" name="address3" class="form-control" placeholder="Enter aAdress3" autocomplete="off">
+                                <div class="text-danger address3"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Zip Code<span class="text-danger">*</span></label>
+                            <input type="text" name="zip_code" class="form-control" placeholder="Enter Zip Code" onkeypress="return onlyNumberKey(event)" autocomplete="off">
+                                <div class="text-danger zip_code"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Country<span class="text-danger">*</span></label>
+                            <input type="text" name="country" class="form-control" placeholder="Enter Country" autocomplete="off">
+                                <div class="text-danger country"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>State<span class="text-danger">*</span></label>
+                            <input type="text" name="state" class="form-control" placeholder="Enter State" autocomplete="off">
+                                <div class="text-danger state"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>City<span class="text-danger">*</span></label>
+                            <input type="text" name="city" class="form-control" placeholder="Enter City" autocomplete="off">
+                            <div class="text-danger city"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Review Count</label>
+                            <input type="text" name="review_count" class="form-control" placeholder="Enter Review Count" autocomplete="off">
+                            <div class="text-danger review_count"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitAddRestaurantForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function myFunction(option) {
+        if (option.selected) {
+            //alert(option.text);
+        }
+    }
+</script>
+
+<script type="text/javascript">  
+    var specialKeys = new Array();  
+    specialKeys.push(8);  
+    function IsNumeric(e) 
+    {  
+        var keyCode = e.which ? e.which : e.keyCode  
+        var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);  
+        document.getElementById("error").style.display = ret ? "none" : "inline";  
+        return ret;  
+    }  
+</script>
+
+<script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+      $("#addResturantForm").validate({
+        // Specify validation rules
+        rules: {
+          name: "required",
+          alias: "required",
+          price: "required",
+          latitude: "required",
+          longitude: "required",
+          categories: "required",
+          address1: "required",
+          country: "required",
+          state: "required",
+          city: "required",
+          image: "required",
+          //transactions: "required",
+          zip_code:"required",
+          
+          url: {
+            "required": true
+          },  
+          phone: {
+            "required": true,
+            //digits: true,
+            minlength: 8,
+            maxlength: 15,
+          }
+        },
+        messages: { 
+
+         phone: {
+          required: "Please enter phone number",
+          digits: "Please enter valid phone number",
+          minlength: "Phone number field accept only 10 digits",
+          maxlength: "Phone number field accept only 10 digits",
+         },   
+
+         rating: {
+          required: "Please enter star rating",
+          digits: "Please enter valid phone number",
+          minlength: "Phone number field accept only 1 digits",
+         },  
+
+         url: {
+          required: "Please enter valid url",
+          url: "Please enter a valid url.",
+         },
+         latitude: {
+          required: "Please enter latitude",
+         },
+         longitude: {
+          required: "Please enter longitude",
+         },
+         categories: {
+          required: "Please select atleast 1 categories",
+         },
+
+         address1: {
+          required: "Please enter address",
+         },
+
+         country: {
+          required: "Please enter country",
+         },
+
+         state: {
+          required: "Please enter state",
+         },
+         
+         city: {
+          required: "Please enter city",
+         },
+
+         transactions: {
+          required: "You must check at least 1 box",
+         },
+
+        },
+      
+      });
+
+
+      $('#url').blur(function() {
+            
+            var url = $('#url').val();  
+            var phone=$('#phone').val();
+            var name = $('#name').val();
+          
+            if(url != '' && phone !=''){
+            
+                $.ajax({
+                    url: '<%=siteUrl%>/restaurants/validate-url',
+                    type: "POST",             
+                    data: {
+                        'url': url,
+                        'name': name,
+                        'phone':phone
+                    },
+                    dataType: "json",
+                        
+                    success: function(data) {
+                         console.log(data);
+                        if(data.data.urls > 0 && data.data.phones > 0){
+                            $('.url').html('<label id="email-error" class="error" for="email">Url Already Exist!</label>');
+                            $('.phone').html('<label id="phone-error" class="error" for="phone">Phone Number Already Exist!</label>');
+                            $('#submitAddRestaurantForm').attr("disabled", true);
+                            return false;          
+                        }else {
+                            $('.url').html('');
+                            $('.phone').html('');
+                            $('#submitAddRestaurantForm').attr("disabled", false);
+                            return true;          
+                        }
+                    }
+                });
+            }
+
+          else if(url != ''  && name != ''){           
+            $.ajax({
+                url: '<%=siteUrl%>/restaurants/validate-url',
+                type: "POST",             
+                data: {
+                    'url': url,
+                    'name': name,
+                    'phone':phone
+                },
+                dataType: "json",
+                    
+                success: function(data) {
+                     console.log(data)
+                    if(data.data.urls > 0 && data.data.name > 0 ){
+                        $('.url').html('<label id="email-error" class="error" for="email">Url Already Exist!</label>');
+                        $('.name').html('<label id="name-error" class="error" for="name">Name is  Already Exist!</label>');
+                        $('#submitAddRestaurantForm').attr("disabled", true);
+                        return false
+                    }else {
+                            $('.url').html('');
+                            $('.name').html('');
+                            $('#submitAddRestaurantForm').attr("disabled", false);
+                            return true;          
+                        }
+                   
+                }
+            });
+        }
+
+        else if(url != '' ){           
+             $.ajax({
+                 url:'<%=siteUrl%>/restaurants/validate-url',
+                 type: "POST",             
+                 data: {
+                     'url': url,
+                     'name': name,
+                     'phone':phone 
+                 },
+                 dataType: "json",
+                     
+                 success: function(data) {
+                      console.log(data)
+                     if(data.data.urls > 0 ){
+                         $('.url').html('<label id="email-error" class="error" for="email">Url Already Exist!</label>'); 
+                         $('#submitAddRestaurantForm').attr("disabled", true);  
+                         return false   
+                     }else {
+                            $('.url').html('');
+                            $('#submitAddRestaurantForm').attr("disabled", false);
+                            return true;          
+                        }
+                   
+                 }
+             });
+         }else {
+            console.log("Here");
+            $('#submitAddRestaurantForm').attr("disabled", false);
+            $('.url').html('');
+            $('.phone').html('');
+            $('.name').html('');
+         }
+        });
+
+
+    });
+    </script>

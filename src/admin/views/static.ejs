@@ -1,0 +1,129 @@
+<% layout('layouts/admin') -%>
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add New Contact Btn -->
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Static Pages</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <h4 class="page-title ml-20 mt-30"><%=name%></h4>
+            <div class="card-body">
+                <form action="/users/static?id=<%=id%>" method="post" >
+                    <div class="row">
+                        
+                  
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Description <span class="text-danger">*</span></label>
+                               
+
+                                <textarea type="text"  id="editor"  class="form-control"  name="content" placeholder="Message"  required><%=content%></textarea>
+
+                                <div class="text-danger contactNumber"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button  type="submit"
+                                        class="btn btn-primary waves-effect waves-light">Submit</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script></script> -->
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+
+
+
+<!-- <script type="text/javascript">
+    function myFunction(option) {
+        if (option.selected) {
+            //alert(option.text);
+        }
+    }
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        //const PROFILE_FORM = <%- JSON.stringify(DM('PROFILE_FORM')) %>;
+       
+
+
+        $("").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitProfileForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                users: {
+                    required: true,
+                   
+                },
+                message: {
+                    required: true,
+                   
+                },
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    remote: {
+                        url: "/is-email-exists",
+                        type: "post",
+                        data: {
+                            id: () => '<%= currentUser._id %>'
+                        }
+                    }
+                },
+                contactNumber: {
+                    required: true,
+                    // pattern: /^\+?[\d]{4,15}$/
+                    pattern: /^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/
+                },
+            },
+            messages: {
+                users:{
+                    required:"Please select at least 1 user"
+                },
+                message: {
+                    required:"Please fill a message",
+                   
+                }
+
+            }
+        });
+    })
+</script>  -->

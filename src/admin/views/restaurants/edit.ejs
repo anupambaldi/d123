@@ -1,0 +1,300 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/restaurants">Restaurants Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Edit</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Edit Restaurants</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" id="EditdResturantForm" enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Name<span class="text-danger">*</span></label>
+                                <input id="name" type="text" name="name" class="form-control" <%= nameDisable %> placeholder="Enter Restaurant Name" autocomplete="off" value="<%= restaurant.name %>" required="required">
+                                <div class="text-danger Name"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Phone<span class="text-danger">*</span></label>
+                                <input id="phone" type="text" name="phone" class="form-control" <%= phoneDisable %> value="<%= restaurant.phone %>" onkeypress="return onlyNumberKey(event)" placeholder="Phone" autocomplete="off" required="required">
+                                <div class="text-danger phone"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Image<span class="text-danger">*</span></label>
+                                <div class="profile-pic-div p-absolute">                             
+                                    <input type="file" id="fileUpload" accept="image/*" name="image" <%= otherDisable %> >
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="profile-pic-div p-absolute">  
+                                    <% let tess = (restaurant.yelp_id)?restaurant.image_url:restaurant.image_url %>                            
+                                        <img src="<%= tess %>" width="200" height="100"/>
+                                </div>  
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Additional Images</label>
+                                <div class="profile-pic-div p-absolute">                             
+                                    <input multiple="multiple" type="file" id="fileUpload" accept="image/*" name="additional_images" <%= otherDisable %> >
+                                </div>
+                            </div>
+                            <% restaurant.additional_image_url.forEach((item)=>{  %>
+
+                                <div class="col-lg-2 form-group mb-3">
+                                    <div class="profile-pic-div p-absolute">  
+                                        <% let tess1 = (restaurant.yelp_id)?item:item %>                            
+                                            <img src="<%= tess1 %>" width="200" height="100"/>
+                                    </div>  
+                                </div>
+
+                            <% }) %>
+                            
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>URL<span class="text-danger">*</span></label>
+                                <input id="url" type="text" name="url" class="form-control" value="<%= restaurant.url %>" placeholder="https://example.com" autocomplete="off" <%= urlDisable %> >
+                                <div class="text-danger url"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                         <div class="form-group mb-3">
+                            <label>Rating</label>
+                            <input type="text" name="rating" class="form-control" value="<%= restaurant.rating %>" <%= otherDisable %> placeholder="Enter rating" autocomplete="off">
+                            <div class="text-danger rating"></div>
+                             </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Category</label> <br>
+                                <select name="categories" id="categories" class="form-control select2-multiple" <%= otherDisable %> data-toggle="select2" multiple>
+                                    <option value="">Select Category</option>
+                                    <% categories.forEach(function(category, index){ %>
+                                    <option value="<%= category._id %>" <% if(JSON.stringify(restaurant.categories).includes(category._id.toString())) { %>selected<% } %>><%= category.name %></option>
+                                    <% }) %>
+                                </select>
+                                <div class="text-danger categories"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body1">
+                                    <h4 style="font-weight: normal;" class="header-title">Coordinates:</h4>
+                                   
+                                    <div class="form-row">
+                                        
+                                        
+                                        <div class="form-group col-md-6">
+                                            <label style="font-weight: normal;" for="inputLatitude" class="col-form-label">Latitude<span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="Latitude" <%= otherDisable %> name="latitude" value="<%= restaurant.loc.coordinates[1] %>" autocomplete="off" required="required">
+                                            <div class="text-danger Latitude"></div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label style="font-weight: normal;" for="inputLongitude" class="col-form-label">Longitude<span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="Longitude" <%= otherDisable %> name="longitude" value="<%= restaurant.loc.coordinates[0] %>" autocomplete="off" required="required">
+                                            <div class="text-danger Longitude"></div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Address1<span class="text-danger">*</span></label>
+                                <input type="text" name="address1" class="form-control" <%= otherDisable %> value="<%= restaurant.location.address1 %>" placeholder="Enter aAdress1" autocomplete="off">
+                                <div class="text-danger address1"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Address2</label>
+                            <input type="text" name="address2" class="form-control" <%= otherDisable %> value="<%= restaurant.location.address2 %>" placeholder="Enter aAdress2" autocomplete="off">
+                                <div class="text-danger address2"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Address3</label>
+                                <input type="text" name="address3" class="form-control" <%= otherDisable %> value="<%= restaurant.location.address3 %>" placeholder="Enter aAdress3" autocomplete="off">
+                                <div class="text-danger address1"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Zip Code<span class="text-danger">*</span></label>
+                            <input type="text" name="zip_code" class="form-control" <%= otherDisable %> value="<%= restaurant.location.zip_code %>" onkeypress="return onlyNumberKey(event)" placeholder="Enter Zip Code" autocomplete="off">
+                                <div class="text-danger zip_code"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Country<span class="text-danger">*</span></label>
+                            <input type="text" name="country" class="form-control" <%= otherDisable %> value="<%= restaurant.location.country %>" placeholder="Enter Country" autocomplete="off" required="required">
+                                <div class="text-danger country"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>State<span class="text-danger">*</span></label>
+                            <input type="text" name="state" class="form-control" <%= otherDisable %> value="<%= restaurant.location.state %>" placeholder="Enter State" autocomplete="off" required="required">
+                                <div class="text-danger state"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>City<span class="text-danger">*</span></label>
+                            <input type="text" name="city" class="form-control" <%= otherDisable %> value="<%= restaurant.location.city %>" placeholder="Enter City" autocomplete="off" required="required">
+                            <div class="text-danger city"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                            <label>Review Count</label>
+                            <input type="text" name="review_count" class="form-control" <%= otherDisable %> value="<%= restaurant.review_count %>" placeholder="Enter Review Count" autocomplete="off">
+                            <div class="text-danger review_count"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                            <button id="submitAddCategoryForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+
+      $("#EditdResturantForm").validate({
+        // Specify validation rules
+        rules: {
+          name: "required",
+          alias: "required",
+          price: "required",
+          latitude: "required",
+          longitude: "required",
+          categories: "required",
+          address1: "required",
+          country: "required",
+          state: "required",
+          city: "required",
+          zip_code:"required",
+          transactions:"required",
+          
+          url: {
+            "required": true
+          },  
+          phone: {
+            "required": true,
+            //digits: true,
+            minlength: 8,
+            maxlength: 15,
+          }
+        },
+        messages: { 
+
+         phone: {
+          required: "Please enter phone number",
+          digits: "Please enter valid phone number",
+          minlength: "Phone number field accept only 10 digits",
+          maxlength: "Phone number field accept only 10 digits",
+         },   
+
+         rating: {
+          required: "Please enter star rating",
+         },  
+
+         url: {
+          required: "Please enter valid url",
+          url: "Please enter a valid url.",
+         },
+         latitude: {
+          required: "Please enter latitude",
+         },
+         longitude: {
+          required: "Please enter longitude",
+         },
+         categories: {
+          required: "Please select atleast 1 categories",
+         },
+
+         address1: {
+          required: "Please enter address",
+         },
+
+         country: {
+          required: "Please enter country",
+         },
+
+         state: {
+          required: "Please enter state",
+         },
+         
+         city: {
+          required: "Please enter city",
+         },
+
+         transactions: {
+          required: "You must check at least 1 box",
+         },
+
+        },
+      
+      });
+    });
+    </script>

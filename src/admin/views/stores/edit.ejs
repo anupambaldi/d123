@@ -1,0 +1,236 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="/stores">Stores</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Edit</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Edit Store(Vendor)</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" id="addCategoryForm" enctype="multipart/form-data">
+                    <div class="row">
+
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Name(EN)<span class="text-danger">*</span></label>
+                                <input type="text" name="nameEN" class="form-control" placeholder="Name (EN)"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger nameEN"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Name(CHN)<span class="text-danger">*</span></label>
+                                <input type="text" name="nameCHN" class="form-control" placeholder="Name (CHN)"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger nameCHN"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Title(EN)<span class="text-danger">*</span></label>
+                                <input type="text" name="titleEN" class="form-control" placeholder="Title (EN)"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger titleEN"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Title(CHN)<span class="text-danger">*</span></label>
+                                <input type="text" name="titleCHN" class="form-control" placeholder="Title (CHN)"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger titleCHN"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Email)<span class="text-danger">*</span></label>
+                                <input type="text" name="email" class="form-control" placeholder="Email"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Country Code<span class="text-danger">*</span></label>
+                                <input type="text" name="countryCode" class="form-control"  value="<%= store.nameEN %>"
+                                    placeholder="Country Code(ISD CODE)" autocomplete="off">
+                                <div class="text-danger countryCode"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Contact<span class="text-danger">*</span></label>
+                                <input type="text" name="mobile" class="form-control" placeholder="Contact"
+                                    autocomplete="off"  value="<%= store.nameEN %>">
+                                <div class="text-danger mobile"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Delivery Time<span class="text-danger">*</span></label>
+                                <input type="text" name="deliveryTime" class="form-control" placeholder="15-20 Min"
+                                    autocomplete="off" value="<%= store.nameEN %>">
+                                <div class="text-danger deliveryTime"></div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body1">
+                                    <h4 class="header-title">Address</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="inputCity" class="col-form-label">Flat Number</label>
+                                            <input type="text" class="form-control" id="flatNo" name="flatNo"  value="<%= store.nameEN %>">
+                                            <div class="text-danger flatNo"></div>
+                                        </div>
+                                        <div class="form-group col-md-7">
+                                            <label for="inputState" class="col-form-label">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address" value="<%= store.nameEN %>">
+                                            <div class="text-danger address"></div>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip" class="col-form-label">Zip</label>
+                                            <input type="text" class="form-control" id="postcode" name="postcode" value="<%= store.nameEN %>">
+                                            <div class="text-danger postcode"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body1">
+                                    <h4 class="header-title">Latitude/Longitude</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCity" class="col-form-label">Latitude</label>
+                                            <input type="text" class="form-control" id="lat" name="lat" value="<%= store.nameEN %>">
+                                            <div class="text-danger lat"></div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputState" class="col-form-label">Longitude</label>
+                                            <input type="text" class="form-control" id="lng" name="lng">
+                                            <div class="text-danger lng"></div>
+                                        </div>
+                                        
+                                    </div>
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Image<span class="text-danger">*</span></label>
+                                <input type="file" name="avatar" class="form-control">
+                                <div class="text-danger avatar"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>&nbsp;</label>
+                                <img src="<%= s3Base+store.avatar %>" width="300" height="200" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitAddCategoryForm" type="submit"
+                                    class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    $(document).ready(function () {
+        const ADD_CATEGORIES_FORM = <%- JSON.stringify(DM('DRIVER_EDIT_FORM')) %>;
+        $("#addCategoryForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitAddCategoryForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                avatar: {
+                    required: true,
+                    extension: "jpg|jpeg|png"
+
+                },
+                nameEN: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                    pattern: /^[a-zA-Z0-9 ]*$/
+                },
+                nameCHN:{
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+                 
+                titleEN  :{ required: true }, 
+                titleCHN  :{ required: true }, 
+                email  :{ 
+                    required: true,
+                    email:true,
+                    remote: {
+                        url: "/vendor-email-chk",
+                        type: "post",
+                        data: {
+                            
+                        }
+                    }
+                }, 
+                password  :{ required: true }, 
+                countryCode  :{ required: true,pattern:/^(\+\d{1,3}|\d{1,4})$/ },
+                mobile  :{ required: true,number:true}, 
+                flatNo  :{ required: true },
+                address  :{ required: true },
+                postcode  :{ required: true },
+                lat  :{ required: true ,number:true},
+                lng  :{ required: true ,number:true},
+                deliveryTime:{required:true}
+                                        
+
+            },
+            messages: ADD_CATEGORIES_FORM
+        });
+    });
+</script>
