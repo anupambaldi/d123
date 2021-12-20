@@ -331,7 +331,7 @@ class UserController {
             
         }
 
-        var serverKey = 'AAAAzZA4sMk:APA91bGohanC9uCg8Vhl3qcvdqCfpBSWb6fC6ImcPc1frmWqj1Q8XusEQqbZVlQcQ9vGNfSNjpKIssicfIPdlG-6eutICnvH-vIOzgtmr3Xw_v8cai9OAEoYywr_lCUnGYYWlrGIFtKh'; //put your server key here
+        var serverKey = '********'; //put your server key here
         var fcm = new FCM(serverKey);
 
         var message = { //this may vary according to the message type (single recipient, multicast, topic, et cetera)
@@ -364,7 +364,7 @@ class UserController {
         let data = await User.find({ _id: selectedUser }).select("_id deviceToken")
         console.log(data);
 
-        var serverKey = 'AAAAzZA4sMk:APA91bGohanC9uCg8Vhl3qcvdqCfpBSWb6fC6ImcPc1frmWqj1Q8XusEQqbZVlQcQ9vGNfSNjpKIssicfIPdlG-6eutICnvH-vIOzgtmr3Xw_v8cai9OAEoYywr_lCUnGYYWlrGIFtKh'; //put your server key here
+        var serverKey = '******'; //put your server key here
         var fcm = new FCM(serverKey);
 
         var token = data[0].deviceToken;
