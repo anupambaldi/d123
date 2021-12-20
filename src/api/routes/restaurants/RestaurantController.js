@@ -645,7 +645,7 @@ class RestaurantController {
           'method': 'GET',
           'url': `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=${limit}&offset=${offset}`,
           'headers': {
-            'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+            'Authorization': 'Bearer ****'
           }
         };
 
