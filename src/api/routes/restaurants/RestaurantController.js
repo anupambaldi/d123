@@ -14,9 +14,8 @@ const objectId = require('../../../../lib/util/index');
 const multer = require('multer');
 
 var FCM = require('fcm-node');
-//var serverKey = 'AAAAFllLzrk:APA91bHUl753UWN8MqzIW0id8wgjEucGA-IwAAC9nQz4qHX42tRD_jYzbbWqFkuIEQvdaKmXUli_hOAcmBZ-DCq3GnRY4A0h0IUkheYMATD6OGg8qFtwGCMWPYUYBH_sXaFKbN_EuPWu'; //put your Client Account server key here
-//var serverKey = 'AAAAMaLZIUc:APA91bGc5ZHPQbpxinAwfarj6Gkbkh2NZ7L_qMuX8en9ILryQtdAAFkxsvcqS_5d_uXe-9UFPcmorhBDvklG_Q8g1P_Ypkli2IaZ38JmpL4hYOp2613tbwaUMNL1rTxH4HGszxcEs8Oq';  // Nouser Account
-var serverKey = 'AAAAzZA4sMk:APA91bGohanC9uCg8Vhl3qcvdqCfpBSWb6fC6ImcPc1frmWqj1Q8XusEQqbZVlQcQ9vGNfSNjpKIssicfIPdlG-6eutICnvH-vIOzgtmr3Xw_v8cai9OAEoYywr_lCUnGYYWlrGIFtKh'; //New Client
+
+var serverKey = '*****'; //New Client
 var fcm = new FCM(serverKey);
 
 //const { initializeApp } = require("firebase-admin/app");
@@ -91,7 +90,7 @@ class RestaurantController {
         'method': 'GET',
         'url': `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}`,
         'headers': {
-          'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+          'Authorization': 'Bearer *****x'
         }
       };
 
@@ -357,7 +356,7 @@ class RestaurantController {
   //       'method': 'GET',
   //       'url': `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=${limit}&offset=${offset}`,
   //       'headers': {
-  //         'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+  //         'Authorization': 'Bearer ****'
   //       }
   //     };
 
@@ -387,7 +386,7 @@ class RestaurantController {
   //             'method': 'GET',
   //             'url': `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=${limit}&offset=${offset}`,
   //             'headers': {
-  //               'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+  //               'Authorization': 'Bearer ****'
   //             }
   //           };
 
@@ -674,7 +673,7 @@ class RestaurantController {
                 'method': 'GET',
                 'url': `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=${limit}&offset=${offset}`,
                 'headers': {
-                  'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+                  'Authorization': 'Bearer *****x'
                 }
               };
           
@@ -1008,7 +1007,7 @@ class RestaurantController {
               const registrationToken = getToken.deviceToken;
               console.log("===========================================================");
               console.log(registrationToken);
-              //const registrationToken = 'cqfmX-9IRr-NdBBFcaTas_:APA91bGlzifHROPei_-HSTSvwylGPt_PG1B7Bn6oZn-wNPH386ozChChlaIR8ZoMWy4rM75oxXPeRLEPMZj-fqgAyNeL84IEwY_nQ7TQsh3C9J8ET16F0AMGu53y-sC9bBJVrpPIRW25';
+              //const registrationToken = 'c7898989';
               if((getToken.isNotification == true) && (getToken.deviceToken)) {
                   
                 console.log("Inside if");
@@ -1384,7 +1383,7 @@ class RestaurantController {
           'method': 'GET',
           'url': `https://api.yelp.com/v3/businesses/${yelpId}`,
           'headers': {
-            'Authorization': 'Bearer 7WAqQIxWi9iyYj4O6q99QFoLP3kV_eDD2rL0VE-VnWaQHZMT6iZxiW8C__Tj7m3RVEsIZcqKhPXbJ1DAcxvrEsRNKmszTHDdYj-29tEqXqj5SiGkRGwCw6RT2a43YXYx'
+            'Authorization': 'Bearer ******x'
           }
         };       
         
